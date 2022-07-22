@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { PoMenuItem } from '@po-ui/ng-components';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'my-pets';
+
+  constructor(
+    private router: Router
+  ) {}
+
+  readonly menus: Array<PoMenuItem> = [
+    { label: 'Home', action: this.onClick.bind(this) },
+    { label: 'Donos do Pet', action: this.gotoOwners.bind(this)}
+  ];
+
+  private onClick() {
+    alert('Clicked in menu item')
+  }
+
+  gotoOwners(): void {
+    this.router.navigate(['owners']);
+  }
+
 }
