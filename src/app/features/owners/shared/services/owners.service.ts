@@ -17,4 +17,12 @@ export class OwnersService {
   get(): Observable<Array<Owner>> {
     return this.httpClient.get<Array<Owner>>(URL);
   }
+
+  delete(id: string): Observable<any> {
+    return this.httpClient.delete(`${URL}/${id}`);
+  }
+
+  post(body: Owner): Observable<Owner> {
+    return this.httpClient.post<Owner>(URL, body);
+  }
 }
